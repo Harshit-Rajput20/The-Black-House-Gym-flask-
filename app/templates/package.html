@@ -1,0 +1,37 @@
+<!-- templates/signup_form.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Package Signup Form</title>
+  </head>
+  <body>
+    <h2>Package Signup Form</h2>
+    <form action="{{ url_for('package.packagesignup') }}" method="post">
+      <label for="packagetype">Package Type: </label><br />
+      <input
+        type="hidden"
+        id="packagetype"
+        name="packagetype"
+        value="{{ package_type }}"
+        required
+      /><br /><br />
+
+      <label for="date">Date:</label><br />
+      <input type="date" id="date" name="date" required /><br /><br />
+
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      // Get the package type from the URL query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const packageType = urlParams.get("package_type");
+
+      // Set the value of the packagetype input field
+      document.getElementById("packagetype").value = packageType;
+    </script>
+  </body>
+</html>
