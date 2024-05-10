@@ -1,5 +1,27 @@
 import smtplib
 
+
+
+def send_email(reciever_email,subject="",body=""):
+    email_text = f"Subject: {subject}\n\n{body}"
+
+    # Connect to the SMTP server
+    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server.starttls()
+
+    # Log in to the SMTP server
+    server.login("harshitrajput778@gmail.com", "gdjf epis oivt aocj")
+
+    # Send the email
+    server.sendmail("harshitrajput778@gmail.com", reciever_email, email_text)
+
+    # Close the connection to the SMTP server
+    server.quit()
+
+    print("credential email sent successfully")
+    
+
+
 def send_fee_due_email(receiver_email, package_type):
     # Define email content based on the package type
     print("inside mail two")

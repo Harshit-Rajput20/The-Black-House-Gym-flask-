@@ -26,7 +26,7 @@ def signup():
         password = request.form['password']
         
         # Create a new user object
-        new_user = User(firstname=firstname, middlename=middlename, lastname=lastname, email=email, phone_number=phone_number, signup_date=datetime.utcnow())
+        new_user = User(firstname=firstname, middlename=middlename, lastname=lastname, email=email, phone_number=phone_number, signup_date=datetime.utcfromtimestamp())
         
         # Set the password for the new user
         new_user.set_password(password)

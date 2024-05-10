@@ -20,7 +20,7 @@ def check_session():
 
         if session_data:
             # Check if session has expired
-            if session_data.expiration > datetime.utcnow():
+            if session_data.expiration > datetime.utcfromtimestamp():
                 # Session is valid, retrieve user details from the database
                 user_id = session_data.user_id
                 user = User.query.get(user_id)

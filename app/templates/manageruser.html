@@ -1,0 +1,76 @@
+<!-- manage_users.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Users</title>
+    <style>
+      /* Add your styles here */
+    </style>
+  </head>
+  <body>
+    <h1>Manage Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Package Type</th>
+          <th>Password</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="user-table-body">
+        <!-- User data will be inserted here -->
+      </tbody>
+    </table>
+
+    <script>
+      // Fetch user data from backend and populate the table
+      fetch("/get_users")
+        .then((response) => response.json())
+        .then((users) => {
+          const tbody = document.getElementById("user-table-body");
+          tbody.innerHTML = "";
+          users.forEach((user) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                        <td>${user.firstname}</td>
+                        <td>${user.lastname}</td>
+                        <td>${user.email}</td>
+                        <td>${user.phone_number}</td>
+                        <td>${user.package_type}</td>
+                        <td>${user.password}</td>
+                        <td>
+                            <button onclick="editUser(${user.id})">Edit</button>
+                            <button onclick="deleteUser(${user.id})">Delete</button>
+                        </td>
+                    `;
+            tbody.appendChild(row);
+          });
+        });
+
+      // Function to handle user editing
+      function editUser(userId) {
+        // Redirect to the edit page with the user ID
+        window.location.href = `/edit_user/${userId}`;
+      }
+
+      // Function to handle user deletion
+      function deleteUser(userId) {
+        // Send a request to backend to delete the user
+        fetch(`/delete_user/${userId}`, {
+          method: "DELETE",
+        }).then((response) => {
+          if (response.ok) {
+            // Reload the page after deletion
+            window.location.reload();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

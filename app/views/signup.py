@@ -38,7 +38,7 @@ def signup():
         lastname = request.form['lastname']
         phone_number = request.form['phone_number']
         
-        new_user = User(firstname=firstname, middlename=middlename, lastname=lastname, email=email, phone_number=phone_number, signup_date=datetime.datetime.utcnow())
+        new_user = User(firstname=firstname, middlename=middlename, lastname=lastname, email=email, phone_number=phone_number, signup_date=datetime.utcfromtimestamp())
         # Create a new user object
         current_app.logger.info(new_user)
  

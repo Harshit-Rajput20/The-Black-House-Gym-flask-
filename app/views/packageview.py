@@ -23,7 +23,7 @@ def packagesignup():
         if user:
             print("database commited1")
             # Create a new PackageSignupTable object
-            new_package_signup = PackageSignupTable(packagetype=packagetype, date=date, email=email)
+            new_package_signup = PackageSignupTable(packagetype=packagetype, date=date, user_email=email)
             print("database commited2")
             # Add the new object to the database session
             db.session.add(new_package_signup)

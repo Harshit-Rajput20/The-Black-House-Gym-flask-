@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Package Signups</title>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Package Signups</h1>
+    <ul>
+      {% for signup in signups %}
+      <li>
+        <strong>Package Type:</strong> {{ signup.packagetype }} <br />
+        <!-- <strong>Date:</strong> {{ signup.date }} <br /> -->
+        <strong>User:</strong> {{ signup.user.firstname }} {{
+        signup.user.middlename }} {{ signup.user.lastname }} <br />
+        <strong>Email:</strong> {{ signup.user.email }} <br />
+        <strong>Phone Number:</strong> {{ signup.user.phone_number }} <br />
+        <strong>Signup Date:</strong> {{ signup.user.signup_date }} <br />
+
+        <form
+          action="{{ url_for('admin.send_email') }}"
+          method="post"
+          class="send-email-form"
+        >
+          <input name="packagetype" value="{{ signup.packagetype }}" />
+          <input name="email" value="{{ signup.user.email }}" />
+          <button type="submit" class="send-email-btn">Send Email</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
