@@ -7,21 +7,16 @@
     <title>View Memberships</title>
   </head>
   <body>
-    <h1>View Memberships</h1>
-    <p>Member Name: {{ member.name }}</p>
-    <p>Member Email: {{ member.email }}</p>
-    <h2>Active Memberships</h2>
+    <h1>Memberships for {{ member.name }}</h1>
     <ul>
       {% for membership in memberships %}
       <li>
-        {{ membership.start_date.strftime('%Y-%m-%d') }} - {{
-        membership.duration }} months
+        Membership ID: {{ membership.id }}<br />
+        Start Date: {{ membership.start_date }}<br />
+        End Date: {{ membership.end_date }}<br />
+        Duration: {{ membership.duration }} months<br />
       </li>
       {% endfor %}
     </ul>
-    <a href="{{ url_for('members.add_membership', member_id=member.id) }}"
-      >Add Membership</a
-    >
-    <a href="{{ url_for('members.list_members') }}">Back to Members</a>
   </body>
 </html>

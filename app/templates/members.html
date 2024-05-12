@@ -11,12 +11,18 @@
     <ul>
       {% for member in members %}
       <li>
+        Name: {{ member.name }}<br />
+        Email: {{ member.email }}<br />
+        Address: {{ member.address }}<br />
+        <!-- Add a link to navigate to the page for adding memberships -->
+        <a href="{{ url_for('members.add_membership', member_id=member.id) }}"
+          >Add Membership</a
+        ><br />
         <a href="{{ url_for('members.view_memberships', member_id=member.id) }}"
-          >{{ member.name }}</a
-        >
+          >View Memberships</a
+        ><br />
       </li>
       {% endfor %}
     </ul>
-    <a href="{{ url_for('members.add_member') }}">Add Member</a>
   </body>
 </html>
