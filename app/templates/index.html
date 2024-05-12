@@ -471,11 +471,7 @@
                 <p>No Free Personal Trainer</p>
                 <p>No Free Zumba Classes</p>
                 <p>No Service Locker Rooms</p>
-                <a
-                  href="{{ url_for('package.packagesignup', package_type=1) }}"
-                  class="btn2"
-                  >Join Now</a
-                >
+                <a href="#" class="btn2">Join Now</a>
               </div>
             </div>
           </div>
@@ -497,11 +493,7 @@
                 <p>10 Days Free Personal Trainer</p>
                 <p>No Free Zumba Classes</p>
                 <p>Free Service Locker Rooms</p>
-                <a
-                  href="{{ url_for('package.packagesignup', package_type=2) }}"
-                  class="btn2"
-                  >Join Now</a
-                >
+                <a href="#" class="btn2">Join Now</a>
               </div>
             </div>
           </div>
@@ -523,11 +515,7 @@
                 <p>15 Days Free Personal Trainer</p>
                 <p>15 Days Free Zumba Classes</p>
                 <p>Free Service Locker Rooms</p>
-                <a
-                  href="{{ url_for('package.packagesignup', package_type=3) }}"
-                  class="btn2"
-                  >Join Now</a
-                >
+                <a href="#" class="btn2">Join Now</a>
               </div>
             </div>
           </div>
@@ -535,10 +523,7 @@
             <div class="inner2">
               <div class="price-tag2">8000 Rs. for 1 Year</div>
               <div class="img2">
-                <img
-                  src="{{ url_for('static', filename='price3.jpg') }}"
-                  alt="price"
-                />
+                <img src="#" alt="price" />
               </div>
               <div class="text2">
                 <h3>Body Building Training</h3>
@@ -549,11 +534,7 @@
                 <p>1 Month Free Personal Trainer</p>
                 <p>2 Months Free Zumba Classes</p>
                 <p>Free Service Locker Rooms</p>
-                <a
-                  href="{{ url_for('package.packagesignup', package_type=4) }}"
-                  class="btn2"
-                  >Join Now</a
-                >
+                <a href="#" class="btn2">Join Now</a>
               </div>
             </div>
           </div>
@@ -613,35 +594,35 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
       $(document).ready(function () {
-        $(".ham-burger, .nav ul li a").click(function () {
-          $(".nav").toggleClass("open");
+        $('.ham-burger, .nav ul li a').click(function () {
+          $('.nav').toggleClass('open');
 
-          $(".ham-burger").toggleClass("active");
+          $('.ham-burger').toggleClass('active');
         });
-        $(".accordian-container").click(function () {
-          $(".accordian-container").children(".body").slideUp();
-          $(".accordian-container").removeClass("active");
-          $(".accordian-container")
-            .children(".head")
-            .children("span")
-            .removeClass("fa-angle-down")
-            .addClass("fa-angle-up");
-          $(this).children(".body").slideDown();
-          $(this).addClass("active");
+        $('.accordian-container').click(function () {
+          $('.accordian-container').children('.body').slideUp();
+          $('.accordian-container').removeClass('active');
+          $('.accordian-container')
+            .children('.head')
+            .children('span')
+            .removeClass('fa-angle-down')
+            .addClass('fa-angle-up');
+          $(this).children('.body').slideDown();
+          $(this).addClass('active');
           $(this)
-            .children(".head")
-            .children("span")
-            .removeClass("fa-angle-up")
-            .addClass("fa-angle-down");
+            .children('.head')
+            .children('span')
+            .removeClass('fa-angle-up')
+            .addClass('fa-angle-down');
         });
 
-        $(".nav ul li a, .go-down").click(function (event) {
-          if (this.hash !== "") {
+        $('.nav ul li a, .go-down').click(function (event) {
+          if (this.hash !== '') {
             event.preventDefault();
 
             var hash = this.hash;
 
-            $("html,body").animate(
+            $('html,body').animate(
               {
                 scrollTop: $(hash).offset().top,
               },
@@ -652,8 +633,8 @@
             );
 
             // add active class in navigation
-            $(".nav ul li a").removeClass("active");
-            $(this).addClass("active");
+            $('.nav ul li a').removeClass('active');
+            $(this).addClass('active');
           }
         });
       });
@@ -662,7 +643,7 @@
 
     <script>
       wow = new WOW({
-        animateClass: "animated",
+        animateClass: 'animated',
         offset: 0,
       });
       wow.init();

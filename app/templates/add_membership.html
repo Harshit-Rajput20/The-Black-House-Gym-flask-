@@ -5,19 +5,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Membership</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
   </head>
   <body>
     <h1>Add Membership</h1>
+    <p>Last Available Membership End Date: {{ last_membership_end_date }}</p>
+    <!-- Display end date of last available membership -->
     <form
       action="{{ url_for('members.add_membership', member_id=member.id) }}"
-      method="POST"
+      method="post"
     >
-      <label for="duration">Duration (months):</label>
-      <input type="number" id="duration" name="duration" required /><br />
-      <button type="submit">Add Membership</button>
+      <label for="duration">Duration:</label>
+      <select name="duration" id="duration" required>
+        <option value="1">1 Month</option>
+        <option value="3">3 Months</option>
+        <option value="6">6 Months</option>
+        <option value="12">1 Year</option></select
+      ><br />
+      <label for="start_date">Start Date:</label>
+      <input type="text" id="start_date" name="start_date" readonly /><br />
+      <!-- Readonly input for selected start date -->
+      <input type="submit" value="Add Membership" />
     </form>
-    <a href="{{ url_for('members.view_memberships', member_id=member.id) }}"
-      >Cancel</a
-    >
+
+    <!-- Include Flatpickr script -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr('#start_date', {
+        enableTime: false,
+        minDate: '{{ last_membership_end_date.strftime("%Y-%m-%d") if last_membership_end_date else "today" }}', // Set minimum selectable date to the end date of the last membership or today if no last membership
+        defaultDate: '{{ last_membership_end_date.strftime("%Y-%m-%d") if last_membership_end_date else "today" }}', // Set default date to the next day after the end date of the last membership or today if no last membership
+        dateFormat: 'Y-m-d', // Set date format
+    });
+
+  </script>
+  
+    </script>
   </body>
 </html>

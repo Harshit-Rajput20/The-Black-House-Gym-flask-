@@ -1,21 +1,17 @@
 from flask import Flask, render_template
-from views.regester import signup_bp
-from views.signup import signup_blueprint
 from models.database import db
 from models.sessions import Session
-from models.package import PackageSignupTable
-from models.user import User
+
 from models.user import Member
 from models.user import Membership
 from views.members import members_bp
-from views.packageview import package_bp
  
 # from views.admin import admin_blueprint
 from sqlalchemy import inspect
-from envsecrets.config import Config
-from views.login import login_blueprint
+# from envsecrets.config import Config
+# from views.login import login_blueprint
 app = Flask(__name__)
-app.config.from_object(Config)
+# app.config.from_object(Config)
 
 # Specify the database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@db:3306/memberInfo'
@@ -23,16 +19,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@db:3306/m
 # Initialize the database
 db.init_app(app)
 
-# Register the blueprint for signup functionality
-# app.register_blueprint(signup_bp, url_prefix='/signup')
-# app.register_blueprint(admin_blueprint)
-# app.register_blueprint(signup_blueprint)
-app.register_blueprint(package_bp)
 app.register_blueprint(members_bp)
 
 
 
-app.register_blueprint(login_blueprint)
+# app.register_blueprint(login_blueprint)
 
 def tables_exist():
     with app.app_context():
@@ -45,7 +36,7 @@ def tables_exist():
 # Function to check if there is any data in the tables
 def data_exists():
     with app.app_context():
-        return any(db.session.query(model).count() > 0 for model in [PackageSignupTable,Session,Member,Membership])
+        return any(db.session.query(model).count() > 0 for model in [Session,Member,Membership])
     
 
 if not tables_exist():
